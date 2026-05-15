@@ -1,0 +1,21 @@
+2026-05-10 18:39:06,478 - INFO - Inicio del proceso.
+2026-05-10 18:39:06,716 - INFO - Se obtuvieron 10 registros desde la API.
+2026-05-10 18:39:06,717 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-05-10 18:39:06,717 - INFO - Total de registros procesados correctamente: 10
+2026-05-10 18:39:06,717 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-05-10 18:39:06,717 - INFO - Proceso finalizado.
+2026-05-15 15:59:25,261 - INFO - Inicio del proceso.
+2026-05-15 15:59:25,531 - INFO - Se obtuvieron 10 registros desde la API.
+2026-05-15 15:59:25,532 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-05-15 15:59:25,532 - INFO - Total de registros procesados correctamente: 10
+2026-05-15 15:59:25,532 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-05-15 15:59:25,532 - INFO - Proceso finalizado.
+2026-05-15 16:13:56,810 - INFO - Inicio del proceso.
+2026-05-15 16:13:57,068 - INFO - Se obtuvieron 10 registros desde la API.
+2026-05-15 16:13:57,069 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-05-15 16:13:57,069 - INFO - Total de registros procesados correctamente: 10
+2026-05-15 16:13:57,069 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-05-15 16:13:57,069 - INFO - Proceso finalizado.
+2026-05-15 16:17:39,767 - INFO - Inicio del proceso.
+2026-05-15 16:17:39,988 - ERROR - Error HTTP: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/user
+2026-05-15 16:17:39,990 - ERROR - No se pudieron obtener los datos de la API. Proceso abortado.
