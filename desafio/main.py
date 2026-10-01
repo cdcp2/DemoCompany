@@ -9,10 +9,10 @@ from csv_writer import write_csv
 
 load_dotenv()
 
-API_URL = os.getenv("API_URL")
-DOMAIN = os.getenv("DOMAIN")   
-CSV_FILENAME = os.getenv("CSV_FILENAME")
-LOG_FILENAME = os.getenv("LOG_FILENAME")
+API_URL = os.getenv("API_URL", "https://jsonplaceholder.typicode.com/users")
+DOMAIN = os.getenv("DOMAIN", "@democompany.com")
+CSV_FILENAME = os.getenv("CSV_FILENAME", "contratistas.csv")
+LOG_FILENAME = os.getenv("LOG_FILENAME", "proceso.log")
 
 logging.basicConfig(
     level=logging.INFO,
@@ -38,8 +38,10 @@ def main() -> None:
 
     try:
         generate_emails(users, DOMAIN)
+        users = [user for user in users if user.get("corporate_email")]
         total_procesados = len(users)
         logging.info(f"Total de registros procesados correctamente: {total_procesados}")
+        logging.info(f"Total de registros omitidos: {total_obtenidos - total_procesados}")
     except Exception as e:
         logging.error(f"Error durante la generación de correos: {e}")
         sys.exit(1)
@@ -55,7 +57,10 @@ def main() -> None:
 
         rows.append([nombre, telefono, email_original, empresa, ciudad, email_corp])
 
-    write_csv(rows, CSV_FILENAME)
+    try:
+        write_csv(rows, CSV_FILENAME)
+    except OSError:
+        sys.exit(1)
 
     logging.info("Proceso finalizado.")
 

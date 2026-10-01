@@ -34,3 +34,4 @@ def write_csv(rows: list, filename: str) -> None:
         logger.info(f"CSV file '{filename}' successfully generated with {len(rows)} records.")
     except IOError as e:
         logger.error(f"Failed to write CSV file '{filename}': {e}")
+        raise

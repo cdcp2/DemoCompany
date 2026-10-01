@@ -1,8 +1,12 @@
 import re
 import logging
+import unicodedata
 from collections import defaultdict
 
 logger = logging.getLogger(__name__)
+
+TITLES = {"mr", "mrs", "ms", "miss", "dr", "dra", "prof", "sr", "sra", "srta"}
+SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
 
 
 def generate_emails(users: list, domain: str) -> None:
@@ -22,12 +26,17 @@ def generate_emails(users: list, domain: str) -> None:
 
     for user in users:
         full_name = user.get("name")
-        if not full_name:
+        if not isinstance(full_name, str) or not full_name.strip():
             logger.warning("Usuario sin nombre, omitiendo generación de correo.")
             user["corporate_email"] = ""
             continue
 
-        base = generate_base(full_name)
+        try:
+            base = generate_base(full_name)
+        except ValueError:
+            logger.warning("Nombre sin partes utilizables, omitiendo generación de correo.")
+            user["corporate_email"] = ""
+            continue
         count = counter[base]
         email = f"{base}{count if count > 0 else ''}{domain}"
         counter[base] += 1
@@ -46,8 +55,12 @@ def generate_base(full_name: str) -> str:
         String with the base username (e.g., "jdoe").
     """
     parts = full_name.strip().split()
+    while parts and parts[0].lower().rstrip(".") in TITLES:
+        parts.pop(0)
+    while len(parts) > 1 and parts[-1].lower().rstrip(".") in SUFFIXES:
+        parts.pop()
     if not parts:
-        return "usuario"
+        raise ValueError("El nombre no contiene partes utilizables.")
     first_name = parts[0]
     last_name = parts[-1] if len(parts) > 1 else ""
     clean_first = clean_username_part(first_name)
@@ -57,7 +70,7 @@ def generate_base(full_name: str) -> str:
     elif clean_first:
         return clean_first
     else:
-        return "usuario"
+        raise ValueError("El nombre no contiene letras utilizables.")
 
 
 def clean_username_part(text: str) -> str:
@@ -70,4 +83,5 @@ def clean_username_part(text: str) -> str:
     Returns:
         Cleaned string containing only lowercase letters.
     """
-    return re.sub(r'[^a-z]', '', text.lower())
+    normalized = unicodedata.normalize("NFKD", text)
+    return re.sub(r'[^a-z]', '', normalized.lower())

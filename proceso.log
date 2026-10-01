@@ -19,3 +19,27 @@
 2026-05-15 16:17:39,767 - INFO - Inicio del proceso.
 2026-05-15 16:17:39,988 - ERROR - Error HTTP: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/user
 2026-05-15 16:17:39,990 - ERROR - No se pudieron obtener los datos de la API. Proceso abortado.
+2026-10-01 12:56:27,168 - INFO - Inicio del proceso.
+2026-10-01 12:56:27,428 - ERROR - Error HTTP: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/user
+2026-10-01 12:56:27,429 - ERROR - No se pudieron obtener los datos de la API. Proceso abortado.
+2026-10-01 12:56:37,395 - INFO - Inicio del proceso.
+2026-10-01 12:56:37,578 - INFO - Se obtuvieron 10 registros desde la API.
+2026-10-01 12:56:37,579 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-10-01 12:56:37,579 - INFO - Total de registros procesados correctamente: 10
+2026-10-01 12:56:37,579 - INFO - Total de registros omitidos: 0
+2026-10-01 12:56:37,580 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-10-01 12:56:37,580 - INFO - Proceso finalizado.
+2026-10-01 12:56:59,170 - INFO - Inicio del proceso.
+2026-10-01 12:56:59,384 - INFO - Se obtuvieron 10 registros desde la API.
+2026-10-01 12:56:59,385 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-10-01 12:56:59,386 - INFO - Total de registros procesados correctamente: 10
+2026-10-01 12:56:59,386 - INFO - Total de registros omitidos: 0
+2026-10-01 12:56:59,386 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-10-01 12:56:59,386 - INFO - Proceso finalizado.
+2026-10-01 12:57:19,810 - INFO - Inicio del proceso.
+2026-10-01 12:57:20,054 - INFO - Se obtuvieron 10 registros desde la API.
+2026-10-01 12:57:20,054 - INFO - Total de registros obtenidos desde el endpoint: 10
+2026-10-01 12:57:20,055 - INFO - Total de registros procesados correctamente: 10
+2026-10-01 12:57:20,055 - INFO - Total de registros omitidos: 0
+2026-10-01 12:57:20,055 - INFO - CSV file 'contratistas.csv' successfully generated with 10 records.
+2026-10-01 12:57:20,055 - INFO - Proceso finalizado.

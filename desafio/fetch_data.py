@@ -21,6 +21,14 @@ def fetch_users(api_url: str) -> list | None:
         if not isinstance(data, list):
             logger.error("El JSON recibido no es una lista de usuarios.")
             return None
+        if any(not isinstance(user, dict) for user in data):
+            logger.error("La lista contiene registros que no son objetos JSON.")
+            return None
+        for user in data:
+            for field in ("company", "address"):
+                if not isinstance(user.get(field, {}), dict):
+                    logger.error("El campo %s debe ser un objeto JSON.", field)
+                    return None
         logger.info(f"Se obtuvieron {len(data)} registros desde la API.")
         return data
     except requests.exceptions.Timeout:
